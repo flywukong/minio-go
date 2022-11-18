@@ -25,6 +25,7 @@ import (
 	"fmt"
 	"hash/crc32"
 	"io"
+	"log"
 	"net/http"
 	"sort"
 	"time"
@@ -256,7 +257,7 @@ func (c *Client) putObjectCommon(ctx context.Context, bucketName, objectName str
 	if s3utils.IsGoogleEndpoint(*c.endpointURL) {
 		return c.putObject(ctx, bucketName, objectName, reader, size, opts)
 	}
-
+	log.Println("put object no multi part")
 	return c.putObject(ctx, bucketName, objectName, reader, size, opts)
 	/*
 		partSize := opts.PartSize
