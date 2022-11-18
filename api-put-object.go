@@ -275,7 +275,7 @@ func (c *Client) putObjectCommon(ctx context.Context, bucketName, objectName str
 		return c.putObjectMultipartStreamNoLength(ctx, bucketName, objectName, reader, opts)
 	}
 
-	if size < int64(partSize) || opts.DisableMultipart {
+	if size < int64(partSize)*10000 || opts.DisableMultipart {
 		return c.putObject(ctx, bucketName, objectName, reader, size, opts)
 	}
 
