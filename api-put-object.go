@@ -247,10 +247,11 @@ func (c *Client) PutObject(ctx context.Context, bucketName, objectName string, r
 
 func (c *Client) putObjectCommon(ctx context.Context, bucketName, objectName string, reader io.Reader, size int64, opts PutObjectOptions) (info UploadInfo, err error) {
 	// Check for largest object size allowed.
-	if size > int64(maxMultipartPutObjectSize) {
-		return UploadInfo{}, errEntityTooLarge(size, maxMultipartPutObjectSize, bucketName, objectName)
-	}
-
+	/*
+		if size > int64(maxMultipartPutObjectSize) {
+			return UploadInfo{}, errEntityTooLarge(size, maxMultipartPutObjectSize, bucketName, objectName)
+		}
+	*/
 	// NOTE: Streaming signature is not supported by GCS.
 	if s3utils.IsGoogleEndpoint(*c.endpointURL) {
 		return c.putObject(ctx, bucketName, objectName, reader, size, opts)
