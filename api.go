@@ -26,6 +26,7 @@ import (
 	"hash/crc32"
 	"io"
 	"io/ioutil"
+	"log"
 	"math/rand"
 	"net"
 	"net/http"
@@ -39,10 +40,10 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/flywukong/minio-go/pkg/credentials"
+	"github.com/flywukong/minio-go/pkg/s3utils"
+	"github.com/flywukong/minio-go/pkg/signer"
 	md5simd "github.com/minio/md5-simd"
-	"github.com/minio/minio-go/v7/pkg/credentials"
-	"github.com/minio/minio-go/v7/pkg/s3utils"
-	"github.com/minio/minio-go/v7/pkg/signer"
 	"golang.org/x/net/publicsuffix"
 )
 

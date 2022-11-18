@@ -26,8 +26,8 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/flywukong/minio-go/pkg/credentials"
 	"github.com/minio/minio-go/v7"
-	"github.com/minio/minio-go/v7/pkg/credentials"
 )
 
 func main() {

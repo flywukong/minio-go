@@ -31,7 +31,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/minio/minio-go/v7/pkg/signer"
+	"github.com/flywukong/minio-go/pkg/signer"
 )
 
 // AssumeRoleResponse contains the result of successful AssumeRole request.

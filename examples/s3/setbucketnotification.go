@@ -24,9 +24,9 @@ import (
 	"context"
 	"log"
 
+	"github.com/flywukong/minio-go/pkg/credentials"
+	"github.com/flywukong/minio-go/pkg/notification"
 	"github.com/minio/minio-go/v7"
-	"github.com/minio/minio-go/v7/pkg/credentials"
-	"github.com/minio/minio-go/v7/pkg/notification"
 )
 
 func main() {
