@@ -256,30 +256,35 @@ func (c *Client) putObjectCommon(ctx context.Context, bucketName, objectName str
 		return c.putObject(ctx, bucketName, objectName, reader, size, opts)
 	}
 
-	partSize := opts.PartSize
-	if opts.PartSize == 0 {
-		partSize = minPartSize
-	}
-
-	if c.overrideSignerType.IsV2() {
-		if size >= 0 && size < int64(partSize) || opts.DisableMultipart {
-			return c.putObject(ctx, bucketName, objectName, reader, size, opts)
+	return c.putObject(ctx, bucketName, objectName, reader, size, opts)
+	/*
+		partSize := opts.PartSize
+		if opts.PartSize == 0 {
+			partSize = minPartSize
 		}
-		return c.putObjectMultipart(ctx, bucketName, objectName, reader, size, opts)
-	}
 
-	if size < 0 {
-		if opts.DisableMultipart {
-			return UploadInfo{}, errors.New("no length provided and multipart disabled")
-		}
-		return c.putObjectMultipartStreamNoLength(ctx, bucketName, objectName, reader, opts)
-	}
 
-	if size < int64(partSize)*10000 || opts.DisableMultipart {
-		return c.putObject(ctx, bucketName, objectName, reader, size, opts)
-	}
+			if c.overrideSignerType.IsV2() {
+				if size >= 0 && size < int64(partSize) || opts.DisableMultipart {
+					return c.putObject(ctx, bucketName, objectName, reader, size, opts)
+				}
+				return c.putObjectMultipart(ctx, bucketName, objectName, reader, size, opts)
+			}
 
-	return c.putObjectMultipartStream(ctx, bucketName, objectName, reader, size, opts)
+			if size < 0 {
+				if opts.DisableMultipart {
+					return UploadInfo{}, errors.New("no length provided and multipart disabled")
+				}
+				return c.putObjectMultipartStreamNoLength(ctx, bucketName, objectName, reader, opts)
+			}
+
+			if size < int64(partSize)*10000 || opts.DisableMultipart {
+				return c.putObject(ctx, bucketName, objectName, reader, size, opts)
+			}
+
+			return c.putObjectMultipartStream(ctx, bucketName, objectName, reader, size, opts)
+	*/
+
 }
 
 func (c *Client) putObjectMultipartStreamNoLength(ctx context.Context, bucketName, objectName string, reader io.Reader, opts PutObjectOptions) (info UploadInfo, err error) {
