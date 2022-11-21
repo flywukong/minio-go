@@ -801,8 +801,8 @@ func (c *Client) newRequest(ctx context.Context, method string, metadata request
 		return req, nil
 	}
 	// set 'Expect' header for the request.
-	log.Println("add expect 100-contine")
-	req.Header.Set("Expect", "100-continue")
+	log.Println("no expect 100-contine")
+	//req.Header.Set("Expect", "100-continue")
 	// Set 'User-Agent' header for the request.
 	c.setUserAgent(req)
 
