@@ -19,6 +19,7 @@ package minio
 
 import (
 	"context"
+	"fmt"
 	"mime"
 	"os"
 	"path/filepath"
@@ -60,5 +61,7 @@ func (c *Client) FPutObject(ctx context.Context, bucketName, objectName, filePat
 			opts.ContentType = "application/octet-stream"
 		}
 	}
+	opts.DisableMultipart = true
+	fmt.Println("dis able Multipart")
 	return c.PutObject(ctx, bucketName, objectName, fileReader, fileSize, opts)
 }

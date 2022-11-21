@@ -254,10 +254,8 @@ func (c *Client) putObjectCommon(ctx context.Context, bucketName, objectName str
 		}
 	*/
 	// NOTE: Streaming signature is not supported by GCS.
-	if s3utils.IsGoogleEndpoint(*c.endpointURL) {
-		return c.putObject(ctx, bucketName, objectName, reader, size, opts)
-	}
-	log.Println("put object no multi part")
+
+	log.Println("put object no multi part123")
 	return c.putObject(ctx, bucketName, objectName, reader, size, opts)
 	/*
 		partSize := opts.PartSize
